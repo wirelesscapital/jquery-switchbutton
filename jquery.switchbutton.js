@@ -101,7 +101,7 @@
 						if(willChangeEvent.isDefaultPrevented()) return;
 						
 						checked = !checked;
-	
+
 						obj.element.prop('checked', checked);
 						obj.$container.toggleClass('ui-state-active', checked);
 						obj.element.change();
@@ -282,11 +282,13 @@
 			}
 		},
 		
-		setChecked: function(param){
-			this.element.prop('checked', param);
-			this.$container.toggleClass('ui-state-active', param);
-			this.element.change();
-			this.element.trigger('didChange');
+		setChecked: function(checked){
+			if(this.element.prop('checked') != checked){
+				this.element.prop('checked', checked);
+				this.$container.toggleClass('ui-state-active', checked);
+				this.element.change();
+				this.element.trigger('didChange');
+			}
 		}
 		
 	});
