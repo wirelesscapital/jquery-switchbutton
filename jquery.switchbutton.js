@@ -280,6 +280,13 @@
 			else {
 				this.$container.removeClass(this.options.disabledClass);
 			}
+		},
+		
+		setChecked: function(param){
+			this.element.prop('checked', param);
+			this.$container.toggleClass('ui-state-active', param);
+			this.element.change();
+			this.element.trigger('didChange');
 		}
 		
 	});
